@@ -11,8 +11,6 @@ var config = {
 
 var pool = new pg.Pool(config);
 
-
-
 router.get('/', function(req, res){
   // This will be replaced with a SELECT statement to SQL
   pool.connect(function(errorConnectingToDatabase, client, done){
@@ -109,7 +107,7 @@ router.put('/save/:id', function(req, res){
       // We connected to the database!!!
       // Now, we're gonna' update stuff!!!!!
 console.log(bookObject);
-      client.query("UPDATE books SET title='$1', author='$2', edition='$3', publisher='$4' WHERE id=$5);" // This is the SQL query
+      client.query("UPDATE books SET title=$1, author=$2, edition=$3, publisher=$4 WHERE id=$5;", // This is the SQL query
 
       [bookObject.title, bookObject.author, bookObject.edition, bookObject.publisher, bookId], // This is the array of things that replaces the $1, $2, $3 in the query
       function(errorMakingQuery, result){ // This is the function that runs after the query takes place
