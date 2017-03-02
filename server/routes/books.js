@@ -104,6 +104,9 @@ router.put('/save/:id', function(req, res){
       console.log('Error connecting to database: ', errorConnectingToDatabase);
       res.sendStatus(500);
     } else {
+      //error if a letter in put into the edition input
+      if(bookObject.edition = )
+        res.sendStatus(500);
       // We connected to the database!!!
       // Now, we're gonna' update stuff!!!!!
 console.log(bookObject);
